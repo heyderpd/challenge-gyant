@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "1ca0a925-d6aa-44c7-9da0-74352a2bb115",
+		"name": "Gyant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1786114"
+	},
+	"item": [
+		{
+			"name": "providers list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/providers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"providers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "providers get slot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/providers/100000000000000000000001/slots?start=2024-01-01&end=2024-01-04",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"providers",
+						"100000000000000000000001",
+						"slots"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2024-01-01"
+						},
+						{
+							"key": "end",
+							"value": "2024-01-04"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "slot pre book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2024-01-01\",\n    \"patientData\": \"some-data\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/providers/100000000000000000000001/slots/200000000000000000000002/book",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"providers",
+						"100000000000000000000001",
+						"slots",
+						"200000000000000000000002",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "slot book confirm",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/slots/200000000000000000000002/appointment/pi_MZ495ixXPrX8kix/confirm",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"slots",
+						"200000000000000000000002",
+						"appointment",
+						"pi_MZ495ixXPrX8kix",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

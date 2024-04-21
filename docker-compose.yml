@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+
+  stripe-mock:
+    image: stripemock/stripe-mock:latest
+    container_name: stripe-mock-server
+    ports:
+      - 12111:12111
+      - 12112:12112
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:latest
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: gyant
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb/mongo_init.js:/docker-entrypoint-initdb.d/mongo_init.js:ro
+    network_mode: host
+    restart: unless-stopped
